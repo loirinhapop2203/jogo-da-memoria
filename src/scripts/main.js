@@ -1,35 +1,43 @@
 //Factory
-function urlBuilder(){}
+function urlBuilder(number){
+    number+="";
 
-// Object instances
+    number = number.padStart(2, '0');
+
+    return `images/heros/card${number}.jpeg`;
+}
+
 let card = new CardManager(urlBuilder);
 let board= new BoardManager("board", 58, card);
 
-//Dom elements
 let menu = document.getElementById('menu');
 let select = document.getElementById('numCards');
 let start = document.getElementById('start');
-//Configuring the menu
-for (let i = 4; i <= 10; i+=2) {//From 4 to 18
-    let n = i*i;//Get i
 
-    //Create a new option for the select
+for (let i = 4; i <= 10; i+=2) {
+    let n = i*i;
+
     let op = document.createElement('option');
 
-    //Set both value and content to i
     op.value=n;
     op.innerHTML=n;
 
-    //Add the new option to the page
     select.appendChild(op);
 }
-// Event listeners
+
 start.addEventListener('click', ()=>{
     menu.classList.add('hidden');
     board.node.classList.remove('hidden');
     board.fill(select.value);
 });
 
-// Development code
-start.click();
+board.node.addEventListener('click',()=>{
+    if(board.check()){
+        setTimeout(() => {
+            menu.classList.remove('hidden');
+            board.node.classList.add('hidden');
+        }, 2000);
+    }
+})
+
 
