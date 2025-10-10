@@ -7,7 +7,7 @@ class CardManager{
 
 // Constructor
 constructor(factory){
-    this.urlFactory = factory
+    this.urlFactory = factory;
 }
     
 // Generate new card based in the hero number
@@ -26,7 +26,7 @@ gen(heroNumber){
 
 }
 onClick(event){
-    if(this.flippedCards.size == 2){
+    if(this.flippedCards.size >= 2){
         this.endTurn();
     }else{
 

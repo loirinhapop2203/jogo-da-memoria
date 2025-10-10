@@ -25,23 +25,27 @@ fill(numberCards){
 
     this.clear();
     this.genRamdonList(numberCards).forEach((number)=>{
+        this.addCard(this.cardManager.gen(number));// antes estava this.addCard(this.cardManager.gen(1)); e estava fora dessa função
+
     })
-    this.addCard(this.cardManager.gen(1));
+    
+    this.adjustCss(); //adicionei o css
 }
 adjustCss(){
 
-    let cols = Math.sqrt(this.curlumCards);
+    let cols = Math.sqrt(this.curNumCards); // antes estava let cols = Math.sqrt(this.curlumCards);
 
-    let size = (108/cols - 1);
+    let size = (100/cols - 1); //antes estava let size = (108/cols - 1);
+
 
 size+='vmin';
 
 document.documentElement.style.setProperty("--numCols", cols);
-document.documentElement.style.setProperty("size", size);
+document.documentElement.style.setProperty("--size", size); //coloquei o -- antes do size, pq tava sem
 }
 
 addCard(card){
-    this.node.appendChild(card);
+  this.node.appendChild(card);
 }
 
 genRamdonList(size){

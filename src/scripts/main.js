@@ -8,7 +8,7 @@ function urlBuilder(number){
 }
 
 let card = new CardManager(urlBuilder);
-let board= new BoardManager("board", 58, card);
+let board= new BoardManager("board", 50, card);
 
 let menu = document.getElementById('menu');
 let select = document.getElementById('numCards');
